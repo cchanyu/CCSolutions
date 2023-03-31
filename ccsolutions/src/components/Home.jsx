@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { updateDoc, getDocs, collection, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase.config';
+import { useSelector } from 'react-redux';
 import "../css/Home.css";
 
 const Home = ({ isAuth }) => {
@@ -8,11 +9,20 @@ const Home = ({ isAuth }) => {
   const [ postLists, setPostList ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const postsCollectionRef = collection(db, 'posts');
-
   const [ isEdit, setIsEdit ] = useState(0);
   const [ title, setTitle ] = useState('');
   const [ code, setCode ] = useState('');
   const [ note, setNote ] = useState('');
+
+  // Selector selects matching posts
+  const searchQuery = useSelector(state => state.search.searchQuery);
+
+  // this filters out any unmatching posts
+  const filteredPosts = postLists.filter(post => {
+    return post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.note.toLowerCase().includes(searchQuery.toLowerCase())
+  });
 
   const getPosts = async() => {
     setLoading(false);
@@ -24,8 +34,6 @@ const Home = ({ isAuth }) => {
   const deletePost = async(id) => {
     const postDocRef = doc(db, 'posts', id);
     await deleteDoc(postDocRef);
-
-    // this reloads the page after deleting the post
     getPosts();
   }
 
@@ -64,9 +72,9 @@ const Home = ({ isAuth }) => {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     getPosts();
-  },[])
+  }, []);
 
   if(loading) {
     return (<h3>Loading...</h3>)
@@ -74,7 +82,7 @@ const Home = ({ isAuth }) => {
 
   return (
     <div className='homepage'>
-      {postLists.length === 0 ? <h3>No post was found</h3> : postLists.map((post) => {
+      {filteredPosts.length === 0 ? <h3>No post was found</h3> : filteredPosts.map((post) => {
         return (
           <div key={post.id} className='card mb-4 shadow shadow-sm'>
             <div className="card-body">

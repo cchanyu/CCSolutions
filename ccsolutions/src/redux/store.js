@@ -1,21 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { SET_SEARCH_QUERY } from './searchActions';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
 
-const initialState = {
-  searchQuery: '',
-};
+const store = createStore(rootReducer);
 
-const searchReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_SEARCH_QUERY:
-      return { ...state, searchQuery: action.payload };
-    default:
-      return state;
-  }
-};
-
-export default configureStore({
-  reducer: {
-    search: searchReducer,
-  },
-});
+export default store;

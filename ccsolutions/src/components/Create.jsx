@@ -17,7 +17,7 @@ const CreatePost = ({isAuth}) => {
   
   const createPost = async() => {
     if(title === '' || code === '' || note === ''){
-      alert("Please fill the form");
+      alert("Please fill out the form");
       return false;
     } else {
       try {
