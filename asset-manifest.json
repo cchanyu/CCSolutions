@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CCSolutions/static/css/main.32a19e9f.css",
+    "main.js": "/CCSolutions/static/js/main.3f3ce0d3.js",
+    "index.html": "/CCSolutions/index.html",
+    "main.32a19e9f.css.map": "/CCSolutions/static/css/main.32a19e9f.css.map",
+    "main.3f3ce0d3.js.map": "/CCSolutions/static/js/main.3f3ce0d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.32a19e9f.css",
+    "static/js/main.3f3ce0d3.js"
+  ]
+}
