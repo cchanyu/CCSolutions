@@ -1,6 +1,7 @@
 import React from 'react'
 import { auth, provider} from '../firebase/firebase.config';
 import { signInWithPopup } from "firebase/auth";
+import GoogleIcon from '../icon/google.svg';
 import "../css/Login.css";
 
 const Login = ({setIsAuth}) => {
@@ -22,7 +23,10 @@ const Login = ({setIsAuth}) => {
       <div className='login-card card mt-5 text-center'>
         <div className="card-body">
           <p className='display-6 mt-3'>Select a login method:</p>
-          <button className='btn btn-dark' onClick={signInWithGoogle}>Sign in with Google</button>
+          <button className='btn btn-dark' onClick={signInWithGoogle}>
+            <img src={GoogleIcon} alt="G" className='login-icon mx-2 justify-content-center' />
+            Sign in with Google
+          </button>
         </div>
       </div>
     </div>

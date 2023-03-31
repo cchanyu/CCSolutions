@@ -1,3 +1,7 @@
 .container > .login-card {
     height: 80vh;
 }
+
+.login-icon {
+    height: 15px;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Timestamp, addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase.config'; 
 import { useNavigate } from 'react-router-dom';
+import "../css/Create.css";
 
 const CreatePost = ({isAuth}) => {
 
