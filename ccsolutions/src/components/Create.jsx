@@ -50,17 +50,17 @@ const CreatePost = ({isAuth}) => {
     <div className='container'>
       <div className='bg-light p-5 rounded mt-3'>
         <h1>Create a Post</h1>
-        <div className='mb-3'>
+        <div className='mb-3 text-start'>
           <label htmlFor='title' className='form-label'>Title</label>
           <input type="text" placeholder='Title' className='form-control' onChange={(e) => setTitle(e.target.value)} />
         </div>
-        <div className='mb-3'>
+        <div className='mb-3 text-start'>
           <label htmlFor='posts' className='form-label'>Code</label>
-          <textarea placeholder='Type in the code here' className='form-control' onChange={(e) => setCode(e.target.value)}></textarea>
+          <textarea placeholder='Type in the code here' className='form-control create-code-block' onChange={(e) => setCode(e.target.value)}></textarea>
         </div>
-        <div className='mb-3'>
+        <div className='mb-3 text-start'>
           <label htmlFor='posts' className='form-label'>Note</label>
-          <textarea placeholder='Type in the note here' className='form-control' onChange={(e) => setNote(e.target.value)}></textarea>
+          <textarea placeholder='Type in the note here' className='form-control create-note' onChange={(e) => setNote(e.target.value)}></textarea>
         </div>
         <button className='btn btn-dark' onClick={createPost}>Submit Post</button>
       </div>
